@@ -1,6 +1,5 @@
-// src/app/jobs/[id]/page.tsx
-
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 // Sample job data
 const initialJobs = [
@@ -33,7 +32,7 @@ const initialJobs = [
     description: "We are looking for a Senior Frontend Developer to join our team...",
     postedBy: "johndoe",
     postedDate: "2023-05-18",
-  }
+  },
 ];
 
 // Fetch job data based on ID
@@ -45,26 +44,40 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
   const job = fetchJobById(params.id);
 
   if (!job) {
-    // Handle non-existing job by rendering a "not found" page
     notFound();
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{job.title}</h1>
-      <p className="text-gray-600 mb-2">
-        <strong>Company:</strong> {job.company}
-      </p>
-      <p className="text-gray-600 mb-2">
-        <strong>Location:</strong> {job.location}
-      </p>
-      <p className="text-gray-600 mb-2">
-        <strong>Type:</strong> {job.type}
-      </p>
-      <p className="text-gray-600 mb-6">{job.description}</p>
-      <p className="text-sm text-gray-500">
-        Posted by {job.postedBy} on {job.postedDate}
-      </p>
+    <div className="container mx-auto px-4 py-12">
+      <div className="bg-white dark:bg-zinc-900 shadow-lg rounded-lg p-8 max-w-4xl mx-auto border border-gray-500 dark:border-gray-700 ">
+        <h1 className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">{job.title}</h1>
+        <div className="space-y-4 mb-6">
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            <span className="font-semibold">Company:</span> {job.company}
+          </p>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            <span className="font-semibold">Location:</span> {job.location}
+          </p>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            <span className="font-semibold">Type:</span> {job.type}
+          </p>
+        </div>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Job Description</h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{job.description}</p>
+        </div>
+        <div className="flex justify-between items-center mt-8">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Posted by <span className="font-semibold">{job.postedBy}</span> on {job.postedDate}
+          </p>
+          <Link
+            href={`/jobs/${job.id}/apply`}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+          >
+            Apply Now
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

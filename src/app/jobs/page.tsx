@@ -120,7 +120,7 @@ export default function JobsPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search jobs..."
-            className="flex-grow px-4 py-2 dark:bg-zinc-900 border border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="flex-grow px-4 py-2 bg-white dark:bg-zinc-900 border border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700">
             <Search size={20} />

@@ -65,7 +65,7 @@ export default function DiscoverPage() {
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
               onClick={() => setSelectedCategory(category)}
-              className="transition duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="transition duration-300 hover:bg-gray-200 dark:hover:bg-zinc-700"
             >
               {category}
             </Button>
@@ -77,7 +77,7 @@ export default function DiscoverPage() {
             placeholder="Search projects or creators..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-4 py-2 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm w-full"
+            className="pl-10 pr-4 py-2 text-zinc-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm w-full"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
         </div>
